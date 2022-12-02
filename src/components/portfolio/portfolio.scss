@@ -1,0 +1,219 @@
+@mixin tablet {
+    @media screen and (max-width: 768px) {
+        @content
+      }
+};
+@mixin mobile {
+    @media screen and (max-width: 480px) {
+        @content
+      }
+};
+
+.portfolio-container{
+    padding-left: 150px;
+    padding-top: 50px;
+    @include tablet{
+        padding-left: 0;
+    }
+    .portfolio-wrapper{
+        display: flex;
+        align-items: center;
+        //justify-content: space-between;
+        @include tablet{
+            flex-direction: column;
+        }
+
+        .portfolio-chart{
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 350px;
+
+            @include tablet{
+                align-items: center;
+                min-height: 500px;
+            }
+
+            h1{
+                color: teal;
+                text-align: center;
+            }
+
+            span{
+                text-align: center;
+                color: teal;
+                margin: 10px 0;
+
+                @include tablet{
+                    margin: 5px 0;
+                }
+            }
+
+            .tolerance-level{
+                text-align: center;
+                color: teal;
+                font-weight: 600;
+                font-size: 20px;
+            }
+            
+            
+
+            .portfolios{
+                display: flex;
+                align-items: center;
+                flex-wrap: wrap;
+                gap: 25px;
+                margin: 50px 0;
+                
+                @include tablet{
+                    gap: 10px;
+                    margin: 25px 0;
+                    justify-content: center;
+                }
+                
+                
+                .progress-bar{
+                    width: 150px;
+                    height: 150px;
+
+                    @include tablet{
+                        width: 110px;
+                        height: 110px;
+                    }
+                }
+                
+            }
+
+            .zero-assets{
+                height: 50px;
+                @include tablet{
+                    height: 100px;
+                    display: none;
+                }
+                span{
+                    margin-right: 10px;
+
+                    .title{
+                        font-weight: 700;
+                    }
+                }
+            }
+
+            .range{
+                height: 80px;
+                width: 380px;
+                background-color: white;
+                border-radius: 10px;
+                padding: 0 65px 0 20px;
+
+                @include tablet{
+                    height: 40px;
+                    width: 190px;
+                }
+
+                .slider-value{
+                    position: relative;
+                    width: 100%;
+
+                    span{
+                        position: absolute;
+                        height: 45px;
+                        width: 45px;
+                        color: white;
+                        font-weight: 500;
+                        top: -40px;
+                        transform: translateX(-50%);
+                        line-height: 55px;
+                        z-index: 2;
+                        text-align: center;
+                        transform-origin: bottom;
+                        transition: transform 0.3s ease-in-out;
+
+                        &::after{
+                            position: absolute;
+                            content: "";
+                            height: 45px;
+                            width: 45px;
+                            background-color: teal;
+                            left: 50%;
+                            transform: translateX(-50%) rotate(45deg);
+                            border: 3px solid gray;
+                            z-index: -1;
+                            text-align: center; 
+                            border-bottom-left-radius: 50%;
+                            border-top-left-radius: 50%;
+                            border-top-right-radius: 50%;
+                        }
+                    }
+                }
+
+                .field{
+                    position: relative;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    height: 100%;
+
+                    .value-left{
+                        position: absolute;
+                        font-size: 18px;
+                        font-weight: 600;
+                        color: teal;
+                        left: -22px;
+                    } 
+                    
+                    .value-right{
+                        position: absolute;
+                        font-size: 18px;
+                        font-weight: 600;
+                        color: teal;
+                        right: -32px;
+                    }
+
+                    input{
+                        appearance: none;
+                        height: 3px;
+                        width: 100%;
+                        background-color: teal;
+                        border-radius: 5px;
+                        outline: none;
+                        border: none;
+
+                        &::-webkit-slider-thumb{
+                            appearance: none;
+                            height: 20px;
+                            width: 20px;
+                            background-color: teal;
+                            border-radius: 50%;
+                            border: 1px solid teal;
+                            cursor: pointer;
+                        }
+                    }
+                }
+
+                
+            }
+        }
+
+        .portfolio-text{
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            @include tablet{
+                display: none;
+            }
+
+            h1{
+                font-size: 50px;
+                color: teal;
+
+                @include tablet{
+                    font-size: 25px;
+                }
+            }
+        }
+    }
+}
